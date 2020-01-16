@@ -13,7 +13,7 @@ def main():
         DEBUG = os.environ.get('DEBUG')
         if DEBUG:
             import ptvsd
-            address = ('localhost', 5678)
+            address = ('0.0.0.0', 5678)
             ptvsd.enable_attach(address=address)
             print('!!! In Debug Mode !!!')
             print('Create ptvsd server at', address)

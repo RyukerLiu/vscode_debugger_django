@@ -4,7 +4,6 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /code
 
-COPY . .
 
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
@@ -13,8 +12,12 @@ RUN apk update \
     && apk del build-deps
 
 RUN pip install --upgrade pip 
+
+COPY Pipfile .
 RUN pip install pipenv
 RUN pipenv install --skip-lock --system
+
+COPY . .
 
 EXPOSE 8000
 
