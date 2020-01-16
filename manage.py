@@ -8,6 +8,15 @@ def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sample_project.settings')
     try:
         from django.core.management import execute_from_command_line
+
+        # add ptvsd for vscode debugger
+        DEBUG = os.environ.get('DEBUG')
+        if DEBUG:
+            import ptvsd
+            address = ('localhost', 5678)
+            ptvsd.enable_attach(address=address)
+            print('!!! In Debug Mode !!!')
+            print('Create ptvsd server at', address)
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
