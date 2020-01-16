@@ -12,7 +12,7 @@ def main():
         # add ptvsd for vscode debugger
         DEBUG = os.environ.get('DEBUG')
         if DEBUG:
-            # Check isMainProcess to avoid create two ptvsd server in same address error
+            # Check isMainProcess to avoid create two ptvsd server in same address error when hot reload
             isMainProcess = os.environ.get('RUN_MAIN') or os.environ.get('WERKZEUG_RUN_MAIN')
             if isMainProcess:
                 import ptvsd
