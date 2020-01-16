@@ -2,18 +2,22 @@
 
 Reference Django Project Sample: https://docs.djangoproject.com/en/3.0/intro/tutorial01/
 
-## Pre-Install
+Reference: https://gist.github.com/veuncent/1e7fcfe891883dfc52516443a008cfcb
 
-`pipenv install`
+Reference for hot reload with debugger: https://ytec.nl/blog/debugging-django-vscode-without-using-noreload/
 
 
 ## Use Debugger Local Attach
+
+### Pre-Install
+
+`pipenv install`
 
 ### Start Local ptvsd server and Web Server
 
 ``` bash
 pipenv shell
-DEBUG=True ./manage.py runserver --noreload
+DEBUG=True ./manage.py runserver
 ```
 
 ### Start Local Attach Debugger

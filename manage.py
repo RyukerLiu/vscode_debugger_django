@@ -12,11 +12,14 @@ def main():
         # add ptvsd for vscode debugger
         DEBUG = os.environ.get('DEBUG')
         if DEBUG:
-            import ptvsd
-            address = ('0.0.0.0', 5678)
-            ptvsd.enable_attach(address=address)
-            print('!!! In Debug Mode !!!')
-            print('Create ptvsd server at', address)
+            # Check isMainProcess to avoid create two ptvsd server in same address error
+            isMainProcess = os.environ.get('RUN_MAIN') or os.environ.get('WERKZEUG_RUN_MAIN')
+            if isMainProcess:
+                import ptvsd
+                address = ('0.0.0.0', 5678)
+                ptvsd.enable_attach(address=address)
+                print('!!! In Debug Mode !!!')
+                print('Create ptvsd server at', address)
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
